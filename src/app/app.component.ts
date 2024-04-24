@@ -71,6 +71,10 @@ export class AppComponent implements OnInit, AfterViewInit {
           this.result = this.mult(data);
         } else if (this.expression == "DIV") {
           this.result = this.div(data);
+        } else if (this.expression == "EXP") {
+          this.result = this.exp(data);
+        } else if (this.expression == "AVG") {
+          this.result = this.avg(data);
         } else {
           this.result = "Función desconocida."
         }
@@ -155,6 +159,36 @@ export class AppComponent implements OnInit, AfterViewInit {
     for (let i = 1; i < data.length; i++) {
       result /= +data[i].trim();
     }
+
+    console.log(result);
+
+    return result;
+  }
+
+  // Potencia de elementos
+  exp(data: string[]): number {
+    let base: number = +data[0].trim();
+    let result: number = base;
+
+    for (let i = 1; i < data.length; i++) {
+      for (let i2 = 1; i2 < +data[i].trim(); i2++) {
+        result *= base;
+      }
+    }
+
+    console.log(result);
+
+    return result;
+  }
+
+  avg(data: string[]): number {
+    let result: number = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      result += +data[i].trim();
+    }
+
+    result /= data.length;
 
     console.log(result);
 
